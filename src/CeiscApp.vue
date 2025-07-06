@@ -1,0 +1,31 @@
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import CeiscLayout from './components/CeiscLayout.vue'
+</script>
+
+<template>
+  <CeiscLayout>
+    <RouterView />
+  </CeiscLayout>
+</template>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  height: 100vh;
+  overflow: hidden;
+}
+</style>
