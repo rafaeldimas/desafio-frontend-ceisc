@@ -5,20 +5,17 @@
         <div class="live-indicator">
           <span class="live-dot"></span>
           <span class="live-text">LIVE</span>
-          <span class="live-time">Início em 01:25:03</span>
+          <span class="live-time">Início em {{ formatTime(remainingTime) }}</span>
         </div>
         <button class="close-btn" @click="closeNotification">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
+          <IconClose />
         </button>
       </div>
-      
+
       <div class="notification-body">
         <p class="notification-title">Curso Combo: Introdução à Advocacia Previdenciári...</p>
       </div>
-      
+
       <div class="notification-actions">
         <button class="btn-dismiss" @click="dismissNotification">Dispensar</button>
         <button class="btn-access" @click="accessLive">Acessar</button>
@@ -29,9 +26,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import IconClose from './icons/IconClose.vue'
 
 const isVisible = ref(true)
-const remainingTime = ref(85503) // 01:25:03 in seconds
+const remainingTime = ref(5 * 60) // 5 minutes
 
 const closeNotification = () => {
   isVisible.value = false
@@ -50,7 +48,7 @@ const formatTime = (seconds: number) => {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds % 3600) / 60)
   const secs = seconds % 60
-  
+
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
 }
 
@@ -225,11 +223,11 @@ onUnmounted(() => {
     left: 0.5rem;
     width: auto;
   }
-  
+
   .notification-actions {
     flex-direction: column;
   }
-  
+
   .btn-dismiss,
   .btn-access {
     width: 100%;
@@ -243,7 +241,7 @@ onUnmounted(() => {
     align-items: flex-start;
     gap: 0.25rem;
   }
-  
+
   .notification-content {
     padding: 0.75rem;
   }

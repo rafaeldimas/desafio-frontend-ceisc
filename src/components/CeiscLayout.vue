@@ -8,157 +8,48 @@
           <span class="logo-text" v-if="!isCollapsed">CEISC</span>
         </div>
         <button class="collapse-btn" @click="toggleSidebar" :class="{ collapsed: isCollapsed }">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
+          <IconChevronRight />
         </button>
       </div>
 
       <nav class="sidebar-nav">
         <div class="nav-item active">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <rect x="3" y="3" width="7" height="7" />
-            <rect x="14" y="3" width="7" height="7" />
-            <rect x="14" y="14" width="7" height="7" />
-            <rect x="3" y="14" width="7" height="7" />
-          </svg>
+          <IconDashboard />
           <span class="nav-text">Dashboard</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <polyline points="16,17 21,12 16,7" />
-            <line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
+          <IconCourses />
           <span class="nav-text">Cursos</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14,2 14,8 20,8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-            <polyline points="10,9 9,9 8,9" />
-          </svg>
+          <IconDocuments />
           <span class="nav-text">Documentos</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
+          <IconCalendar />
           <span class="nav-text">Agenda</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-          </svg>
+          <IconEdit />
           <span class="nav-text">Editar</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <path d="M16 10a4 4 0 0 1-8 0" />
-          </svg>
+          <IconShop />
           <span class="nav-text">Loja</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-            />
-            <polyline points="7.5,4.21 12,6.81 16.5,4.21" />
-            <polyline points="7.5,19.79 7.5,14.6 3,12" />
-            <polyline points="21,12 16.5,14.6 16.5,19.79" />
-          </svg>
+          <IconPackage />
           <span class="nav-text">Notificações</span>
         </div>
 
         <div class="nav-item">
-          <svg
-            class="nav-icon"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
+          <IconSearch />
           <span class="nav-text">Buscar</span>
         </div>
       </nav>
@@ -170,18 +61,7 @@
       <header class="header">
         <div class="header-left">
           <button class="mobile-menu-btn" @click="toggleSidebar">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
+            <IconMenu />
           </button>
           <div class="breadcrumb">
             <span>Lorem</span>
@@ -191,17 +71,7 @@
         </div>
         <div class="header-right">
           <button class="notification-btn">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-            </svg>
+            <IconBell />
           </button>
           <div class="user-avatar">
             <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
@@ -226,6 +96,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import IconChevronRight from './icons/IconChevronRight.vue'
+import IconDashboard from './icons/IconDashboard.vue'
+import IconCourses from './icons/IconCourses.vue'
+import IconDocuments from './icons/IconDocuments.vue'
+import IconCalendar from './icons/IconCalendar.vue'
+import IconEdit from './icons/IconEdit.vue'
+import IconShop from './icons/IconShop.vue'
+import IconPackage from './icons/IconPackage.vue'
+import IconSearch from './icons/IconSearch.vue'
+import IconMenu from './icons/IconMenu.vue'
+import IconBell from './icons/IconBell.vue'
 
 const isCollapsed = ref(false)
 const isMobile = ref(false)
