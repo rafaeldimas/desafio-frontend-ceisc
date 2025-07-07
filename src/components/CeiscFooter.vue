@@ -62,6 +62,7 @@ import IconLogo from './icons/IconLogo.vue'
   color: #9ca3af;
   padding: 2rem 0;
   margin-top: auto;
+  width: 100%;
 }
 
 .footer-content {

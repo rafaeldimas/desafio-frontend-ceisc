@@ -18,9 +18,6 @@
     <!-- Activity Section -->
     <ActivitySection />
 
-    <!-- Footer -->
-    <CeiscFooter />
-
     <!-- Live Notification -->
     <LiveNotification />
   </div>
@@ -30,7 +27,6 @@
 import NewsSection from './NewsSection.vue'
 import ConfirmationSection from './ConfirmationSection.vue'
 import ActivitySection from './ActivitySection.vue'
-import CeiscFooter from './CeiscFooter.vue'
 import LiveNotification from './LiveNotification.vue'
 </script>
 

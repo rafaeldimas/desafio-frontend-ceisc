@@ -1,107 +1,113 @@
 <template>
   <div class="layout">
-    <!-- Sidebar -->
-    <aside class="sidebar" :class="{ collapsed: isCollapsed }">
-      <div class="sidebar-header" @click="toggleSidebar">
-        <div class="logo">
-          <IconLogo :size="32" />
-          <span class="logo-text" v-if="!isCollapsed">CEISC</span>
-        </div>
-      </div>
-
-      <nav class="sidebar-nav">
-        <div class="nav-item active">
-          <IconDashboard />
-          <span class="nav-text">Dashboard</span>
-        </div>
-
-        <div class="nav-item">
-          <IconCourses />
-          <span class="nav-text">Cursos</span>
-        </div>
-
-        <div class="nav-item">
-          <IconDocuments />
-          <span class="nav-text">Documentos</span>
-        </div>
-
-        <div class="nav-item">
-          <IconCalendar />
-          <span class="nav-text">Agenda</span>
-        </div>
-
-        <div class="nav-item">
-          <IconEdit />
-          <span class="nav-text">Editar</span>
-        </div>
-
-        <div class="nav-item">
-          <IconShop />
-          <span class="nav-text">Loja</span>
-        </div>
-
-        <div class="nav-item">
-          <IconPackage />
-          <span class="nav-text">Notificações</span>
-        </div>
-
-        <div class="nav-item">
-          <IconSearch />
-          <span class="nav-text">Buscar</span>
-        </div>
-      </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Mobile Header -->
-      <header class="mobile-header" v-if="isMobile">
-        <div class="mobile-header-content">
-          <div class="mobile-logo">
+    <!-- Main Layout Container -->
+    <div class="layout-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" :class="{ collapsed: isCollapsed }">
+        <div class="sidebar-header" @click="toggleSidebar">
+          <div class="logo">
             <IconLogo :size="32" />
-            <span class="mobile-logo-text">ceisc</span>
+            <span class="logo-text" v-if="!isCollapsed">CEISC</span>
           </div>
-          <div class="mobile-header-actions">
-            <button class="mobile-notification-btn">
-              <IconBell />
-            </button>
-            <div class="mobile-user-avatar">
-              <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-item active">
+            <IconDashboard />
+            <span class="nav-text">Dashboard</span>
+          </div>
+
+          <div class="nav-item">
+            <IconCourses />
+            <span class="nav-text">Cursos</span>
+          </div>
+
+          <div class="nav-item">
+            <IconDocuments />
+            <span class="nav-text">Documentos</span>
+          </div>
+
+          <div class="nav-item">
+            <IconCalendar />
+            <span class="nav-text">Agenda</span>
+          </div>
+
+          <div class="nav-item">
+            <IconEdit />
+            <span class="nav-text">Editar</span>
+          </div>
+
+          <div class="nav-item">
+            <IconShop />
+            <span class="nav-text">Loja</span>
+          </div>
+
+          <div class="nav-item">
+            <IconPackage />
+            <span class="nav-text">Notificações</span>
+          </div>
+
+          <div class="nav-item">
+            <IconSearch />
+            <span class="nav-text">Buscar</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Mobile Header -->
+        <header class="mobile-header" v-if="isMobile">
+          <div class="mobile-header-content">
+            <div class="mobile-logo">
+              <IconLogo :size="32" />
+              <span class="mobile-logo-text">ceisc</span>
             </div>
+            <div class="mobile-header-actions">
+              <button class="mobile-notification-btn">
+                <IconBell />
+              </button>
+              <div class="mobile-user-avatar">
+                <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
+              </div>
+              <button class="mobile-menu-btn" @click="toggleSidebar">
+                <IconMenu />
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Desktop Header -->
+        <header class="header" v-if="!isMobile">
+          <div class="header-left">
             <button class="mobile-menu-btn" @click="toggleSidebar">
               <IconMenu />
             </button>
+            <div class="breadcrumb">
+              <span>Lorem</span>
+              <span class="separator">...</span>
+              <span>Lorem ipsum dolor sit amet</span>
+            </div>
           </div>
-        </div>
-      </header>
+          <div class="header-right">
+            <button class="notification-btn">
+              <IconBell />
+            </button>
+            <div class="user-avatar">
+              <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
+            </div>
+          </div>
+        </header>
 
-      <!-- Desktop Header -->
-      <header class="header" v-if="!isMobile">
-        <div class="header-left">
-          <button class="mobile-menu-btn" @click="toggleSidebar">
-            <IconMenu />
-          </button>
-          <div class="breadcrumb">
-            <span>Lorem</span>
-            <span class="separator">...</span>
-            <span>Lorem ipsum dolor sit amet</span>
-          </div>
-        </div>
-        <div class="header-right">
-          <button class="notification-btn">
-            <IconBell />
-          </button>
-          <div class="user-avatar">
-            <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
-          </div>
-        </div>
-      </header>
-
-      <!-- Content Area -->
-      <main class="content">
-        <slot></slot>
-      </main>
+        <!-- Content Area -->
+        <main class="content">
+          <slot></slot>
+        </main>
+      </div>
     </div>
+
+    <!-- Footer -->
+    <CeiscFooter />
 
     <!-- Mobile Overlay -->
     <div
@@ -125,6 +131,7 @@ import IconPackage from './icons/IconPackage.vue'
 import IconSearch from './icons/IconSearch.vue'
 import IconMenu from './icons/IconMenu.vue'
 import IconBell from './icons/IconBell.vue'
+import CeiscFooter from './CeiscFooter.vue'
 
 const isCollapsed = ref(false)
 const isMobile = ref(false)
@@ -158,9 +165,15 @@ onUnmounted(() => {
 
 <style scoped>
 .layout {
-  display: flex;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container {
+  display: flex;
+  flex: 1;
 }
 
 /* Mobile Header */
@@ -234,17 +247,6 @@ onUnmounted(() => {
   background-color: #f3f4f6;
 }
 
-@media (max-width: 1023px) {
-  .layout {
-    flex-direction: column;
-  }
-
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-}
 
 .sidebar {
   width: 250px;
@@ -253,13 +255,9 @@ onUnmounted(() => {
   transition: width 0.3s ease;
   position: relative;
   z-index: 1000;
+  flex-shrink: 0;
 }
 
-@media (min-width: 1024px) {
-  .layout {
-    flex-direction: row;
-  }
-}
 
 .sidebar.collapsed {
   width: 60px;
@@ -348,7 +346,6 @@ onUnmounted(() => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .header {
@@ -420,7 +417,6 @@ onUnmounted(() => {
 
 .content {
   flex: 1;
-  overflow: auto;
   padding: 1.5rem;
 }
 
@@ -439,8 +435,13 @@ onUnmounted(() => {
   display: block;
 }
 
+
 /* Mobile Styles */
 @media (max-width: 1023px) {
+  .layout-container {
+    flex-direction: column;
+  }
+
   .mobile-header {
     display: block;
   }
@@ -464,6 +465,12 @@ onUnmounted(() => {
     transform: translateX(0);
   }
 
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   .content {
     padding: 1rem;
     flex: 1;
@@ -472,6 +479,10 @@ onUnmounted(() => {
 
 /* Desktop Styles */
 @media (min-width: 1024px) {
+  .layout-container {
+    flex-direction: row;
+  }
+
   .mobile-header {
     display: none;
   }
@@ -480,15 +491,9 @@ onUnmounted(() => {
     display: flex;
   }
 
-  .layout {
-    flex-direction: row;
-  }
-
   .main-content {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
 }
 
