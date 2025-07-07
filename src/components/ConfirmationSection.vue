@@ -33,37 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import IconLightning from './icons/IconLightning.vue'
 import AlertMessage from './AlertMessage.vue'
-
-interface ConfirmationCard {
-  startDate: string
-  title: string
-  cancelText: string
-  confirmText: string
-}
-
-const confirmationCards = ref<ConfirmationCard[]>([
-  {
-    startDate: '• Início 28/01/2024',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    cancelText: 'Cancelar',
-    confirmText: 'Confirmar',
-  },
-  {
-    startDate: '• Início 28/01/2024',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    cancelText: 'Cancelar',
-    confirmText: 'Confirmar',
-  },
-  {
-    startDate: '• Início 28/01/2024',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    cancelText: 'Cancelar',
-    confirmText: 'Confirmar',
-  },
-])
+import { confirmationCards } from '../mocks/data.json'
 </script>
 
 <style scoped>

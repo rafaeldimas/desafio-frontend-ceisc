@@ -19,38 +19,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref, type Component } from 'vue'
+import { computed } from 'vue'
+import mockData from '../mocks/data.json'
 import IconChart from './icons/IconChart.vue'
 import IconGlobe from './icons/IconGlobe.vue'
 import IconMap from './icons/IconMap.vue'
 
-interface Activity {
-  icon: Component
-  title: string
-  description: string
-  linkText: string
+const iconComponents = {
+  IconChart,
+  IconGlobe,
+  IconMap,
 }
 
-const activities = ref<Activity[]>([
-  {
-    icon: IconChart,
-    title: 'Lorem ipsum',
-    description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar',
-  },
-  {
-    icon: IconGlobe,
-    title: 'Lorem ipsum',
-    description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar',
-  },
-  {
-    icon: IconMap,
-    title: 'Lorem ipsum',
-    description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar',
-  },
-])
+const activities = computed(() => {
+  return mockData.activities.map((activity) => ({
+    ...activity,
+    icon: iconComponents[activity.icon as keyof typeof iconComponents],
+  }))
+})
 </script>
 
 <style scoped>
