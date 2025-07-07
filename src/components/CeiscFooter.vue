@@ -1,13 +1,13 @@
 <template>
-  <footer class="app-footer">
+  <footer class="ceisc-footer">
     <div class="footer-content">
       <div class="footer-left">
         <div class="footer-logo">
-          <div class="logo-icon">D</div>
+          <IconLogo :size="32" />
           <span class="logo-text">ceisc</span>
         </div>
       </div>
-      
+
       <div class="footer-center">
         <div class="footer-links">
           <a href="#" class="footer-link">Termos de uso</a>
@@ -16,29 +16,27 @@
           <span class="separator">•</span>
           <a href="#" class="footer-link">Política de resposta a incidentes</a>
         </div>
-        <div class="footer-copyright">
-          © 2024 Ceisc. Todos os direitos reservados.
-        </div>
+        <div class="footer-copyright">© 2024 Ceisc. Todos os direitos reservados.</div>
       </div>
-      
+
       <div class="footer-right">
         <div class="social-links">
           <a href="#" class="social-link" aria-label="Instagram">
             <IconInstagram />
           </a>
-          
+
           <a href="#" class="social-link" aria-label="YouTube">
             <IconYoutube />
           </a>
-          
+
           <a href="#" class="social-link" aria-label="Facebook">
             <IconFacebook />
           </a>
-          
+
           <a href="#" class="social-link" aria-label="Twitter">
             <IconTwitter />
           </a>
-          
+
           <a href="#" class="social-link" aria-label="LinkedIn">
             <IconLinkedin />
           </a>
@@ -54,11 +52,12 @@ import IconYoutube from './icons/IconYoutube.vue'
 import IconFacebook from './icons/IconFacebook.vue'
 import IconTwitter from './icons/IconTwitter.vue'
 import IconLinkedin from './icons/IconLinkedin.vue'
+import IconLogo from './icons/IconLogo.vue'
 // Footer component logic here if needed
 </script>
 
 <style scoped>
-.app-footer {
+.ceisc-footer {
   background-color: #1f2937;
   color: #9ca3af;
   padding: 2rem 0;
@@ -172,11 +171,11 @@ import IconLinkedin from './icons/IconLinkedin.vue'
     text-align: center;
     gap: 1.5rem;
   }
-  
+
   .footer-center {
     order: -1;
   }
-  
+
   .footer-left,
   .footer-right {
     order: 1;
@@ -184,23 +183,23 @@ import IconLinkedin from './icons/IconLinkedin.vue'
 }
 
 @media (max-width: 768px) {
-  .app-footer {
+  .ceisc-footer {
     padding: 1.5rem 0;
   }
-  
+
   .footer-content {
     padding: 0 1rem;
   }
-  
+
   .footer-links {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .separator {
     display: none;
   }
-  
+
   .social-links {
     justify-content: center;
   }
@@ -210,11 +209,11 @@ import IconLinkedin from './icons/IconLinkedin.vue'
   .footer-links {
     gap: 0.75rem;
   }
-  
+
   .social-links {
     gap: 0.75rem;
   }
-  
+
   .social-link {
     width: 36px;
     height: 36px;

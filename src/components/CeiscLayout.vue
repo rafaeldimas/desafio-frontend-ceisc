@@ -2,14 +2,11 @@
   <div class="layout">
     <!-- Sidebar -->
     <aside class="sidebar" :class="{ collapsed: isCollapsed }">
-      <div class="sidebar-header">
+      <div class="sidebar-header" @click="toggleSidebar">
         <div class="logo">
-          <div class="logo-icon">C</div>
+          <IconLogo :size="32" />
           <span class="logo-text" v-if="!isCollapsed">CEISC</span>
         </div>
-        <button class="collapse-btn" @click="toggleSidebar" :class="{ collapsed: isCollapsed }">
-          <IconChevronRight />
-        </button>
       </div>
 
       <nav class="sidebar-nav">
@@ -57,8 +54,29 @@
 
     <!-- Main Content -->
     <div class="main-content">
-      <!-- Header -->
-      <header class="header">
+      <!-- Mobile Header -->
+      <header class="mobile-header" v-if="isMobile">
+        <div class="mobile-header-content">
+          <div class="mobile-logo">
+            <IconLogo :size="32" />
+            <span class="mobile-logo-text">ceisc</span>
+          </div>
+          <div class="mobile-header-actions">
+            <button class="mobile-notification-btn">
+              <IconBell />
+            </button>
+            <div class="mobile-user-avatar">
+              <img src="https://i.pravatar.cc/32?img=9" alt="User Avatar" />
+            </div>
+            <button class="mobile-menu-btn" @click="toggleSidebar">
+              <IconMenu />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Desktop Header -->
+      <header class="header" v-if="!isMobile">
         <div class="header-left">
           <button class="mobile-menu-btn" @click="toggleSidebar">
             <IconMenu />
@@ -96,7 +114,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import IconChevronRight from './icons/IconChevronRight.vue'
+import IconLogo from './icons/IconLogo.vue'
 import IconDashboard from './icons/IconDashboard.vue'
 import IconCourses from './icons/IconCourses.vue'
 import IconDocuments from './icons/IconDocuments.vue'
@@ -145,6 +163,89 @@ onUnmounted(() => {
   background-color: #f8f9fa;
 }
 
+/* Mobile Header */
+.mobile-header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 1.5rem;
+  z-index: 1001;
+  height: 72px;
+  box-sizing: border-box;
+}
+
+.mobile-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-logo-text {
+  font-size: 2.125rem;
+  font-weight: 900;
+  color: #374151;
+  text-transform: lowercase;
+  line-height: normal;
+}
+
+.mobile-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-notification-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: #6b7280;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-notification-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.mobile-user-avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: #374151;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background-color: #f3f4f6;
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .sidebar {
   width: 250px;
   background-color: white;
@@ -154,6 +255,12 @@ onUnmounted(() => {
   z-index: 1000;
 }
 
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+  }
+}
+
 .sidebar.collapsed {
   width: 60px;
 }
@@ -161,9 +268,22 @@ onUnmounted(() => {
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+  justify-content: flex-start;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid #e9ecef;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 72px;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  padding: 1rem 0.5rem;
+}
+
+.sidebar-header:hover {
+  background-color: #f8f9fa;
 }
 
 .logo {
@@ -172,44 +292,15 @@ onUnmounted(() => {
   gap: 0.5rem;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(45deg, #4f46e5, #7c3aed);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-}
-
 .logo-text {
-  font-weight: bold;
-  font-size: 1.125rem;
+  font-weight: 900;
+  font-size: 2.125rem;
   color: #374151;
   transition: opacity 0.3s ease;
 }
 
 .sidebar.collapsed .logo-text {
   opacity: 0;
-}
-
-.collapse-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  transition: transform 0.3s ease;
-}
-
-.collapse-btn:hover {
-  background-color: #f8f9fa;
-}
-
-.collapse-btn.collapsed {
-  transform: rotate(180deg);
 }
 
 .sidebar-nav {
@@ -267,6 +358,8 @@ onUnmounted(() => {
   padding: 1rem 1.5rem;
   background-color: white;
   border-bottom: 1px solid #e9ecef;
+  height: 72px;
+  box-sizing: border-box;
 }
 
 .header-left {
@@ -275,7 +368,7 @@ onUnmounted(() => {
   gap: 1rem;
 }
 
-.mobile-menu-btn {
+.header .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
@@ -284,7 +377,7 @@ onUnmounted(() => {
   border-radius: 4px;
 }
 
-.mobile-menu-btn:hover {
+.header .mobile-menu-btn:hover {
   background-color: #f8f9fa;
 }
 
@@ -348,6 +441,14 @@ onUnmounted(() => {
 
 /* Mobile Styles */
 @media (max-width: 1023px) {
+  .mobile-header {
+    display: block;
+  }
+
+  .header {
+    display: none;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -356,18 +457,38 @@ onUnmounted(() => {
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 1000;
+    margin-top: 0;
   }
 
   .sidebar:not(.collapsed) {
     transform: translateX(0);
   }
 
-  .mobile-menu-btn {
-    display: block;
-  }
-
   .content {
     padding: 1rem;
+    flex: 1;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .mobile-header {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .layout {
+    flex-direction: row;
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 }
 

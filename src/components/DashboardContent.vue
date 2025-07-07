@@ -4,7 +4,8 @@
     <div class="hero-section">
       <h1 class="hero-title">Lorem ipsum dolor sit amet, adipiscing elit.</h1>
       <p class="hero-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod vel nulla a placerat.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod vel nulla a
+        placerat.
       </p>
     </div>
 
@@ -18,7 +19,7 @@
     <ActivitySection />
 
     <!-- Footer -->
-    <AppFooter />
+    <CeiscFooter />
 
     <!-- Live Notification -->
     <LiveNotification />
@@ -29,7 +30,7 @@
 import NewsSection from './NewsSection.vue'
 import ConfirmationSection from './ConfirmationSection.vue'
 import ActivitySection from './ActivitySection.vue'
-import AppFooter from './AppFooter.vue'
+import CeiscFooter from './CeiscFooter.vue'
 import LiveNotification from './LiveNotification.vue'
 </script>
 
@@ -64,11 +65,11 @@ import LiveNotification from './LiveNotification.vue'
   .hero-title {
     font-size: 1.75rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
-  
+
   .hero-section {
     margin-bottom: 1.5rem;
   }
@@ -78,11 +79,11 @@ import LiveNotification from './LiveNotification.vue'
   .hero-title {
     font-size: 1.5rem;
   }
-  
+
   .hero-description {
     font-size: 0.95rem;
   }
-  
+
   .hero-section {
     margin-bottom: 1rem;
   }

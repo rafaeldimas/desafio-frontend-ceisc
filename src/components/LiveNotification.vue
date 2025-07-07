@@ -60,6 +60,7 @@ onMounted(() => {
       remainingTime.value--
     } else {
       if (timer) {
+        dismissNotification()
         clearInterval(timer)
       }
     }
