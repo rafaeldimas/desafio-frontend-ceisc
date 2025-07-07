@@ -3,7 +3,7 @@
     <div class="footer-content">
       <div class="footer-left">
         <div class="footer-logo">
-          <IconLogo :size="32" />
+          <IconLogo :size="32" flag-color="white" triangle-color="#181D27" />
           <span class="logo-text">ceisc</span>
         </div>
       </div>
