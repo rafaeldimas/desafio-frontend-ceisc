@@ -6,28 +6,23 @@
         <h2>Lorem ipsum</h2>
       </div>
     </div>
-    
+
     <p class="section-description">
       dolor sit amet, consectetur adipiscing elit. Mauris euismod vel nulla a placerat.
     </p>
 
-    <div class="alert-message">
-      <div class="alert-icon">
-        <IconAlertCircle />
-      </div>
-      <span>dolor sit amet, consectetur adipiscing elit.</span>
-    </div>
+    <AlertMessage> dolor sit amet, consectetur adipiscing elit. </AlertMessage>
 
     <div class="confirmation-grid">
       <div class="confirmation-card" v-for="(card, index) in confirmationCards" :key="index">
         <div class="card-header">
           <span class="start-date">{{ card.startDate }}</span>
         </div>
-        
+
         <div class="card-content">
           <h3 class="card-title">{{ card.title }}</h3>
         </div>
-        
+
         <div class="card-actions">
           <button class="btn-cancel">{{ card.cancelText }}</button>
           <button class="btn-confirm">{{ card.confirmText }}</button>
@@ -40,7 +35,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import IconLightning from './icons/IconLightning.vue'
-import IconAlertCircle from './icons/IconAlertCircle.vue'
+import AlertMessage from './AlertMessage.vue'
 
 interface ConfirmationCard {
   startDate: string
@@ -54,20 +49,20 @@ const confirmationCards = ref<ConfirmationCard[]>([
     startDate: '• Início 28/01/2024',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cancelText: 'Cancelar',
-    confirmText: 'Confirmar'
+    confirmText: 'Confirmar',
   },
   {
     startDate: '• Início 28/01/2024',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cancelText: 'Cancelar',
-    confirmText: 'Confirmar'
+    confirmText: 'Confirmar',
   },
   {
     startDate: '• Início 28/01/2024',
     title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     cancelText: 'Cancelar',
-    confirmText: 'Confirmar'
-  }
+    confirmText: 'Confirmar',
+  },
 ])
 </script>
 
@@ -108,28 +103,6 @@ const confirmationCards = ref<ConfirmationCard[]>([
   font-size: 0.875rem;
   margin-bottom: 1rem;
   line-height: 1.5;
-}
-
-.alert-message {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background-color: #fef3c7;
-  border: 1px solid #f59e0b;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.alert-icon {
-  color: #d97706;
-  flex-shrink: 0;
-}
-
-.alert-message span {
-  color: #92400e;
-  font-size: 0.875rem;
-  font-weight: 500;
 }
 
 .confirmation-grid {
@@ -217,15 +190,15 @@ const confirmationCards = ref<ConfirmationCard[]>([
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .confirmation-section {
     padding: 1rem;
   }
-  
+
   .card-actions {
     flex-direction: column;
   }
-  
+
   .btn-cancel,
   .btn-confirm {
     width: 100%;
@@ -236,12 +209,6 @@ const confirmationCards = ref<ConfirmationCard[]>([
 @media (max-width: 480px) {
   .confirmation-card {
     padding: 1rem;
-  }
-  
-  .alert-message {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
   }
 }
 </style>
