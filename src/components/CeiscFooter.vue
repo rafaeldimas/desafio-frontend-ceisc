@@ -49,11 +49,11 @@
 </template>
 
 <script setup lang="ts">
-import IconInstagram from './icons/IconInstagram.vue'
-import IconYoutube from './icons/IconYoutube.vue'
-import IconFacebook from './icons/IconFacebook.vue'
-import IconTwitter from './icons/IconTwitter.vue'
-import IconLinkedin from './icons/IconLinkedin.vue'
+import IconInstagram from './icons/social-midia/IconInstagram.vue'
+import IconYoutube from './icons/social-midia/IconYoutube.vue'
+import IconFacebook from './icons/social-midia/IconFacebook.vue'
+import IconTwitter from './icons/social-midia/IconTwitter.vue'
+import IconLinkedin from './icons/social-midia/IconLinkedin.vue'
 import IconLogo from './icons/IconLogo.vue'
 // Footer component logic here if needed
 </script>

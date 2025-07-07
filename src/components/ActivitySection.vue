@@ -2,12 +2,14 @@
   <div class="activity-section">
     <div class="activity-grid">
       <div class="activity-card" v-for="(activity, index) in activities" :key="index">
-        <div class="activity-icon">
-          <component :is="activity.icon" />
-        </div>
-        
-        <div class="activity-content">
+        <div class="activity-header">
+          <div class="activity-icon">
+            <component :is="activity.icon" />
+          </div>
           <h3 class="activity-title">{{ activity.title }}</h3>
+        </div>
+
+        <div class="activity-content">
           <p class="activity-description">{{ activity.description }}</p>
           <button class="activity-link">{{ activity.linkText }}</button>
         </div>
@@ -17,71 +19,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref, h } from 'vue'
+import { ref, type Component } from 'vue'
+import IconChart from './icons/IconChart.vue'
+import IconGlobe from './icons/IconGlobe.vue'
+import IconMap from './icons/IconMap.vue'
 
 interface Activity {
-  icon: any
+  icon: Component
   title: string
   description: string
   linkText: string
 }
 
-const ChartIcon = () => h('svg', {
-  width: 24,
-  height: 24,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': '2'
-}, [
-  h('path', { d: 'M3 3v18h18' }),
-  h('path', { d: 'M18.7 8l-5.1 5.2-2.8-2.7L7 14.3' })
-])
-
-const GlobeIcon = () => h('svg', {
-  width: 24,
-  height: 24,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': '2'
-}, [
-  h('circle', { cx: '12', cy: '12', r: '10' }),
-  h('line', { x1: '2', y1: '12', x2: '22', y2: '12' }),
-  h('path', { d: 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z' })
-])
-
-const MapIcon = () => h('svg', {
-  width: 24,
-  height: 24,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': '2'
-}, [
-  h('path', { d: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z' }),
-  h('circle', { cx: '12', cy: '10', r: '3' })
-])
-
 const activities = ref<Activity[]>([
   {
-    icon: ChartIcon,
+    icon: IconChart,
     title: 'Lorem ipsum',
     description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar'
+    linkText: 'Acessar',
   },
   {
-    icon: GlobeIcon,
+    icon: IconGlobe,
     title: 'Lorem ipsum',
     description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar'
+    linkText: 'Acessar',
   },
   {
-    icon: MapIcon,
+    icon: IconMap,
     title: 'Lorem ipsum',
     description: 'Abaixo você encontra a última atividade realizada na plataforma',
-    linkText: 'Acessar'
-  }
+    linkText: 'Acessar',
+  },
 ])
 </script>
 
@@ -98,45 +66,55 @@ const activities = ref<Activity[]>([
 
 .activity-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .activity-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .activity-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  background: #3b82f6;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2563eb;
-  margin-bottom: 1.5rem;
+  color: white;
+  flex-shrink: 0;
 }
 
 .activity-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+  width: 100%;
 }
 
 .activity-title {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: #374151;
   margin: 0;
+  flex: 1;
 }
 
 .activity-description {
@@ -144,23 +122,23 @@ const activities = ref<Activity[]>([
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
-  max-width: 280px;
 }
 
 .activity-link {
   color: #2563eb;
-  background: none;
-  border: none;
+  background: white;
+  border: 1px solid #2563eb;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  padding: 0.625rem 1.25rem;
+  border-radius: 50px;
+  transition: all 0.2s ease;
 }
 
 .activity-link:hover {
-  background-color: #eff6ff;
+  background-color: #2563eb;
+  color: white;
 }
 
 /* Responsive Design */
@@ -169,14 +147,14 @@ const activities = ref<Activity[]>([
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .activity-card {
     padding: 1.5rem;
   }
-  
+
   .activity-icon {
-    width: 56px;
-    height: 56px;
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -184,12 +162,12 @@ const activities = ref<Activity[]>([
   .activity-card {
     padding: 1rem;
   }
-  
+
   .activity-icon {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
-  
+
   .activity-title {
     font-size: 1.125rem;
   }
